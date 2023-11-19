@@ -12,7 +12,9 @@ class BlogController extends Controller
     public function Blog()
     {
 
-        $post = Vidioes::with('comments')->get();
+        $post = Posts::with('comments')
+        ->whereHas('comments')
+        ->get();
         return $post;
     }
 }
